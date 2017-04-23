@@ -85,11 +85,11 @@ class App extends Component {
     return(
       <div>
         <div className="App-main"><h2>Simple Risk App</h2></div>
-        <div className="App-main">
+        <div className="App-main App-sub">
           <p>Settled Bets</p>
           <Settled settledCustomers={this.state.settledCustomers} settledMap={this.state.settledMap}></Settled>
         </div>
-        <div className="App-main">
+        <div className="App-main App-sub">
           <p>Un-Settled Bets</p>
           <Unsettled unsettledCustomers={this.state.unsettledCustomers} settledCustomers={this.state.settledCustomers}></Unsettled>
         </div>

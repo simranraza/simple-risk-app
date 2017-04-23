@@ -12,6 +12,13 @@
 
 }
 
+.App-sub{
+  height: 280px;
+  display:block;
+  overflow:scroll;
+
+}
+
 .risk-table, .risk-td, .risk-th {
     border: 1px solid #ddd;
     text-align: left;
