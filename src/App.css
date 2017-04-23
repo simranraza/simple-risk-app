@@ -22,3 +22,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.risk-table, .risk-td, .risk-th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.risk-th, .risk-td {
+    padding: 10px;
+    text-align: left;
+}
+
+.danger-tr{
+  background-color: #FF4500;
+}
