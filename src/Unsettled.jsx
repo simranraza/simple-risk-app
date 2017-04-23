@@ -5,11 +5,46 @@ class Unsettled extends Component{
   constructor(props){
     super(props);
   }
+
+  highlistRisk(bet)
+  {
+    let rval="";
+    console.dir('bet:'+ bet);
+
+    if (bet.stake > (this.getCustomerAvgBet(bet.customer)*10)) {
+      console.log('30 time higher'+ bet.customer);
+      if (bet.stake > (this.getCustomerAvgBet(bet.customer)*30))
+        rval = "unusual-high-stake";
+      else
+        rval = "unusual-tentimes-stake";
+    }
+    else if (bet.toWin > 1000){
+      rval = "unusual-high-won";
+    }
+    else
+      rval = "normal";
+    return rval;
+  }
+  getCustomerAvgBet(cust_id){
+    let cust_history = this.props.settledCustomers;
+    var totalBets=0;
+    var totalStake=0
+    var avg = 0;
+    cust_history.forEach((item)=>{
+        if(item.customer === cust_id){
+          totalBets = totalBets+1;
+          totalStake = totalStake + item.stake;
+        }
+      });
+      avg = totalStake/totalBets;
+
+      return avg;
+  }
   render() {
     console.dir('Un settled'+this.props.unsettledCustomers);
     let unsettled = _.map(this.props.unsettledCustomers, (scustomer) =>{
       return(
-                        <tr>
+                        <tr className = {(this.highlistRisk(scustomer))}>
                             <td className="risk-td">
                               {scustomer.customer}
                             </td>

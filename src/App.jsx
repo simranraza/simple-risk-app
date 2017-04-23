@@ -89,9 +89,9 @@ class App extends Component {
           <p>Settled Bets</p>
           <Settled settledCustomers={this.state.settledCustomers} settledMap={this.state.settledMap}></Settled>
         </div>
-        <div>
+        <div className="App-main">
           <p>Un-Settled Bets</p>
-          <Unsettled unsettledCustomers={this.state.unsettledCustomers}></Unsettled>
+          <Unsettled unsettledCustomers={this.state.unsettledCustomers} settledCustomers={this.state.settledCustomers}></Unsettled>
         </div>
       </div>
     )

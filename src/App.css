@@ -2,31 +2,13 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 .App-main {
   margin: auto;
   text-align: center;
   width: 40%;
+  margin-top:20px;
 
 }
 
@@ -41,4 +23,19 @@
 
 .danger-tr{
   background-color: #FF4500;
+}
+
+.unusual-high-won{
+  background-color:#FFFF00;
+}
+
+.unusual-high-stake{
+  background-color:#FF6347;
+}
+
+.unusual-tentimes-stake{
+  background-color:#FF1493;
+}
+.normal{
+  background-color:#FFFFFF;
 }
