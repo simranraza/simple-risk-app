@@ -54,8 +54,8 @@ class App extends Component {
     let settledMap = this.state.settledMap;
     let bet = settledMap.get(cust_id);
     let per = (100/bet.totalBets)*bet.wonBets;
-    console.dir(bet);
-    return per;
+    console.dir(per);
+    return per > 60 ? true:false;
   }
 
   analyseCustomer(){
@@ -71,7 +71,7 @@ class App extends Component {
 
     let settled = _.map(this.state.settledCustomers, (scustomer) =>{
       return(
-                        <tr className="danger-tr">
+                        <tr className={(this.isUnusualSettled(scustomer.customer)?'danger-tr':'bg-primary')}>
                             <td className="risk-td">
                               {scustomer.customer}
                             </td>
