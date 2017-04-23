@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import {FormGroup, FormControl, InputGroup, Glyphicon} from 'react-bootstrap';
 import Settled from './Settled';
+import Unsettled from './Unsettled'
 import _ from 'lodash';
 
 class App extends Component {
@@ -10,10 +11,11 @@ class App extends Component {
     this.state = {
       settledCustomers:[],
       unsettledCustomers:[],
-      settledMap:{}
+      settledMap:{},
+      unSettledMap:{}
     };
   }
-  getSettledCustomers(){
+  getSettledBets(){
 
     let settledMap = new Map();
     const SETTLED_BETS_URL = 'http://private-1ab82e-whbetsapi.apiary-mock.com/settled';
@@ -51,6 +53,21 @@ class App extends Component {
     })
   }
 
+  getUnsettledBets(){
+    const UNSETTLED_BETS_URL = 'http://private-1ab82e-whbetsapi.apiary-mock.com/unsettled';
+    fetch(UNSETTLED_BETS_URL,{
+      method : 'GET'
+    })
+    .then(response => response.json())
+    .then(json => {
+      this.setState(
+        {
+          unsettledCustomers: json,
+
+        }
+      );
+    });
+  }
   isUnusualSettled(cust_id){
     let settledMap = this.state.settledMap;
     let bet = settledMap.get(cust_id);
@@ -60,8 +77,8 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.getSettledCustomers();
-
+    this.getSettledBets();
+    this.getUnsettledBets();
   }
   render(){
 
@@ -69,9 +86,12 @@ class App extends Component {
       <div>
         <div className="App-main"><h2>Simple Risk App</h2></div>
         <div className="App-main">
-          <p>Settled customers</p>
+          <p>Settled Bets</p>
           <Settled settledCustomers={this.state.settledCustomers} settledMap={this.state.settledMap}></Settled>
-
+        </div>
+        <div>
+          <p>Un-Settled Bets</p>
+          <Unsettled unsettledCustomers={this.state.unsettledCustomers}></Unsettled>
         </div>
       </div>
     )
